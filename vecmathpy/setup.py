@@ -51,11 +51,11 @@ class CMakeBuild(build_ext):
         subprocess.check_call(cmake_args_build)
 
 
-setup(name="pycpp",
+setup(name="vecmathpy",
     version=version(),
     description="Python cpp wrapper demo",
-    url="https://github.com/AIS2203-H-2022/python-wrapper-demo",
+    url="https://github.com/AIS2203-H-2023/vecmathpy",
     license="MIT",
-    ext_modules=[CMakeExtension('pycpp')],
+    ext_modules=[CMakeExtension('vecmathpy')],
     cmdclass=dict(build_ext=CMakeBuild),
 )

@@ -14,11 +14,11 @@ def _handle():
     if __dll_handle is not None:
         return __dll_handle
 
-    bin_dir = Path(f"{__file__}/../build/bin")
+    build_dir = Path(f"{__file__}/../build")
 
     def prefix() -> str:
         if platform.system() == "Windows":
-            return "Release/" if (bin_dir / "Release").exists() else ""
+            return "bin"
         elif platform.system() == "Linux":
             return "lib"
         else:  # Darwin
@@ -32,7 +32,7 @@ def _handle():
         else:  # Darwin
             return ".dylib"
 
-    __dll_handle = CDLL(f"{bin_dir}/{prefix()}vecmathc{suffix()}")
+    __dll_handle = CDLL(f"{build_dir}/{prefix()}/vecmathc{suffix()}")
     return __dll_handle
 
 
